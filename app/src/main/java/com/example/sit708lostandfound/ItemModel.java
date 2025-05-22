@@ -8,11 +8,12 @@ public class ItemModel {
     private String date;
     private String contact;
     private String status;
-    private int userId;
+    private Double latitude;
+    private Double longitude;
 
     public ItemModel() {}
 
-    public ItemModel(int id, String name, String description, String location, String date, String contact, String status) {
+    public ItemModel(int id, String name, String description, String location, String date, String contact, String status, Double latitude, Double longitude) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,6 +21,8 @@ public class ItemModel {
         this.date = date;
         this.contact = contact;
         this.status = status;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getId() {
@@ -70,14 +73,6 @@ public class ItemModel {
         this.contact = contact;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -85,4 +80,21 @@ public class ItemModel {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public Double getLatitude(){
+        return latitude;
+    }
+
+    public void setLatitude(double latitude){
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude(){
+        return longitude;
+    }
+
+    public void setLongitude(double longitude){
+        this.longitude = longitude;
+    }
+
 }

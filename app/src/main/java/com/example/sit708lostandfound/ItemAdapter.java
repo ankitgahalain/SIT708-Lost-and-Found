@@ -61,6 +61,7 @@ public class ItemAdapter extends BaseAdapter {
         contact.setText("Contact: " + item.getContact());
         status.setText("Status: " + item.getStatus());
 
+
         Log.d("Status", "statusIs: " + item.getStatus());
 
         view.setOnClickListener(v -> {

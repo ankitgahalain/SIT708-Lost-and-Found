@@ -5,11 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "lostfound.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     public static final String TABLE_NAME = "items";
 
     public DatabaseHelper(Context context) {
@@ -25,7 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "location TEXT, " +
                 "date TEXT, " +
                 "contact TEXT, " +
-                "status TEXT)");
+                "status TEXT, " +
+                "latitude REAL, " +
+                "longitude REAL)");
     }
 
     public boolean insertItem(ItemModel item) {
@@ -37,8 +40,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("date", item.getDate());
         values.put("contact", item.getContact());
         values.put("status", item.getStatus());
+        values.put("latitude", item.getLatitude());
+        values.put("longitude", item.getLongitude());
 
         long result = db.insert(TABLE_NAME, null, values);
+
+        Log.d("DB_INSERT", "Inserted: " + item.getName() + ", Lat: " + item.getLatitude() + ", Lng: " + item.getLongitude());
+
         return result != -1;
     }
 
